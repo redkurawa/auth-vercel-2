@@ -54,9 +54,13 @@ app.get(
   }
 );
 
+// app.get('/profile', (req, res) => {
+//   if (!req.user) return res.redirect('/');
+//   res.send(`Welcome ${req.user.displayName}`);
+// });
+
 app.get('/profile', (req, res) => {
-  if (!req.user) return res.redirect('/');
-  res.send(`Welcome ${req.user.displayName}`);
+  res.send(`Welcome ${req.user.displayName} <br><a href='/logout'>LogOut</a>`);
 });
 
 app.get('/logout', (req, res, next) => {
