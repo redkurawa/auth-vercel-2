@@ -93,7 +93,6 @@ coverage/
 
 # ---- Environment & Config ----
 .env
-.env.*
 *.local
 *.secret
 config.json
