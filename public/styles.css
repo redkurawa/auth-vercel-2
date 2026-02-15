@@ -1,0 +1,149 @@
+/* Modern CSS Styles - Slate Tailwind Theme (only applies when body has 'css-enabled' class) */
+
+body.css-enabled {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+body.css-enabled .container {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  max-width: 450px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+  border: 1px solid #e2e8f0;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+body.css-enabled .welcome-text {
+  font-size: 1.8rem;
+  color: #1e293b;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+body.css-enabled .welcome-text::before {
+  content: '👋 ';
+}
+
+body.css-enabled .user-name {
+  color: #475569;
+  font-weight: 700;
+}
+
+body.css-enabled .btn {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: none;
+  margin: 8px;
+}
+
+body.css-enabled .btn-primary {
+  background: #475569;
+  color: white;
+  box-shadow: 0 4px 15px rgba(71, 85, 105, 0.25);
+}
+
+body.css-enabled .btn-primary:hover {
+  background: #334155;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(71, 85, 105, 0.35);
+}
+
+body.css-enabled .btn-danger {
+  background: #64748b;
+  color: white;
+  box-shadow: 0 4px 15px rgba(100, 116, 139, 0.25);
+}
+
+body.css-enabled .btn-danger:hover {
+  background: #475569;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(100, 116, 139, 0.35);
+}
+
+body.css-enabled .btn-toggle {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: #475569;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 0.9rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+body.css-enabled .btn-toggle:hover {
+  background: #334155;
+  transform: translateY(-2px);
+}
+
+body.css-enabled .google-icon {
+  display: inline-block;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+body.css-enabled .login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+body.css-enabled .login-title {
+  font-size: 1.5rem;
+  color: #1e293b;
+  margin-bottom: 10px;
+}
+
+body.css-enabled .login-subtitle {
+  color: #64748b;
+  font-size: 0.95rem;
+}
+
+/* Basic styles for toggle button (always visible) */
+.btn-toggle {
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+  background: #333;
+  color: #fff;
+  border: 1px solid #333;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+.container {
+  margin-top: 60px;
+}
