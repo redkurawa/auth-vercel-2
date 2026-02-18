@@ -192,6 +192,9 @@ Aplikasi memiliki dua mode tampilan:
 auth-vercel-2/
 ├── api/
 │   └── index.js        # Main application file
+├── public/
+│   ├── feature.html    # Tutorial halaman DOM & Google Auth
+│   └── styles.css     # CSS styles
 ├── .env                # Environment variables (tidak di-commit)
 ├── .env.sample         # Sample environment variables
 ├── .gitignore          # Git ignore file
@@ -199,6 +202,23 @@ auth-vercel-2/
 ├── vercel.json         # Vercel configuration
 └── README.md           # Documentation
 ```
+
+---
+
+## 📚 Halaman Fitur (feature.html)
+
+Aplikasi ini juga menyertakan halaman tutorial yang menjelaskan konsep DOM (Document Object Model) dan cara mengintegrasikannya dengan Google Auth. Halaman ini tersedia di `/feature.html`.
+
+### Apa yang Dipelajari:
+
+- **Apa itu DOM?** - Memahami Document Object Model sebagai antarmuka pemrograman untuk dokumen web
+- **Mengapa DOM dengan Google Auth?** - Cara membuat UI dinamis berdasarkan status autentikasi
+- **Contoh Kode** - Praktis memanipulasi DOM berdasarkan status login
+- **Konsep Utama** - getElementById, element.style, textContent, addEventListener, classList.toggle
+
+### Cara Mengakses:
+
+Buka `/feature.html` di browser Anda untuk melihat tutorial.
 
 ---
 
