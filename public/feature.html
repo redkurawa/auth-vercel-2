@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Features - Auth Vercel</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <style>
+      body {
+        font-family:
+          -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+          sans-serif;
+        line-height: 1.6;
+        max-width: 900px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .header {
+        text-align: center;
+        padding: 40px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+      .header h1 {
+        margin: 0;
+        font-size: 2.5em;
+      }
+      .header p {
+        margin: 10px 0 0;
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+      .lang-toggle {
+        text-align: right;
+        margin-bottom: 15px;
+      }
+      .lang-toggle button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        background: #667eea;
+        color: white;
+        font-size: 14px;
+      }
+      .lang-toggle button:hover {
+        background: #764ba2;
+      }
+      .section {
+        background: white;
+        padding: 25px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+      .section h2 {
+        color: #333;
+        margin-top: 0;
+        border-bottom: 2px solid #667eea;
+        padding-bottom: 10px;
+      }
+      .section h2 .lang-en,
+      .section h2 .lang-id {
+        display: none;
+      }
+      .section h2.lang-en {
+        display: block;
+      }
+      .section p,
+      .section li,
+      .section td,
+      .section th {
+        display: none;
+      }
+      body.lang-en .section p.lang-en,
+      body.lang-en .section li.lang-en,
+      body.lang-en .section td.lang-en,
+      body.lang-en .section th.lang-en {
+        display: block;
+      }
+      body.lang-id .section p.lang-id,
+      body.lang-id .section li.lang-id,
+      body.lang-id .section td.lang-id,
+      body.lang-id .section th.lang-id {
+        display: block;
+      }
+      body.lang-en .section h2 .lang-en {
+        display: inline;
+      }
+      body.lang-id .section h2 .lang-id {
+        display: inline;
+      }
+      .feature-list {
+        list-style: none;
+        padding: 0;
+      }
+      .feature-list li {
+        padding: 12px 0;
+        border-bottom: 1px solid #eee;
+        display: flex;
+        align-items: center;
+      }
+      .feature-list li:last-child {
+        border-bottom: none;
+      }
+      .feature-list li::before {
+        content: '✅';
+        margin-right: 12px;
+      }
+      .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      .tech-badge {
+        background: #667eea;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9em;
+      }
+      .btn {
+        display: inline-block;
+        padding: 12px 30px;
+        background: #667eea;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        margin-top: 20px;
+        transition: background 0.3s;
+      }
+      .btn:hover {
+        background: #764ba2;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+      }
+      .cta-button {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 15px 40px;
+        font-size: 1.3em;
+        font-weight: bold;
+        background: linear-gradient(135deg, #ff6b6b 0%, #feca57 100%);
+        color: white;
+        text-decoration: none;
+        border-radius: 50px;
+        margin-top: 25px;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 107, 107, 0.4);
+      }
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.6);
+      }
+      .cta-button span {
+        font-size: 1.4em;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background: #667eea;
+        color: white;
+      }
+      pre {
+        background: #f4f4f4;
+        padding: 15px;
+        border-radius: 5px;
+        overflow-x: auto;
+      }
+      .intro-text {
+        display: none;
+      }
+      body.lang-en .intro-text.lang-en {
+        display: block;
+      }
+      body.lang-id .intro-text.lang-id {
+        display: block;
+      }
+      .header p.lang-en,
+      .header p.lang-id {
+        display: none;
+      }
+      body.lang-en .header p.lang-en {
+        display: block;
+      }
+      body.lang-id .header p.lang-id {
+        display: block;
+      }
+      /* Also handle div elements in header for buttons */
+      .header > div.lang-en,
+      .header > div.lang-id {
+        display: none;
+      }
+      body.lang-en .header > div.lang-en {
+        display: block;
+      }
+      body.lang-id .header > div.lang-id {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="lang-en">
+    <div class="lang-toggle">
+      <button onclick="setLanguage('en')">English</button>
+      <button onclick="setLanguage('id')">Indonesia</button>
+    </div>
+
+    <div class="header">
+      <h1>🔐 Auth Vercel</h1>
+      <p>Google OAuth Authentication Application</p>
+      <div class="lang-en" style="margin-top: 25px">
+        <a href="/" class="cta-button"><span>🚀</span> Try Now</a>
+      </div>
+      <div class="lang-id" style="margin-top: 25px">
+        <a href="/" class="cta-button"><span>🚀</span> Buka Aplikasi</a>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>
+        <span class="lang-en">📋 Description</span>
+        <span class="lang-id">📋 Deskripsi</span>
+      </h2>
+      <p class="intro-text lang-en">
+        Auth Vercel is a Google OAuth 2.0 authentication application that can
+        run on localhost or be deployed to Vercel. This application features a
+        CSS toggle to switch between basic and modern display modes. Users can
+        log in with their Google account and view their profile after successful
+        authentication.
+      </p>
+      <p class="intro-text lang-id">
+        Auth Vercel adalah aplikasi autentikasi Google OAuth 2.0 yang dapat
+        dijalankan di localhost maupun di-deploy ke Vercel. Aplikasi ini
+        memiliki fitur toggle CSS untuk beralih antara tampilan basic dan
+        modern. Pengguna dapat login dengan akun Google mereka dan melihat
+        profil mereka setelah berhasil login.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>
+        <span class="lang-en">✨ Features</span>
+        <span class="lang-id">✨ Fitur Utama</span>
+      </h2>
+      <ul class="feature-list">
+        <li class="lang-en">Login with Google OAuth 2.0</li>
+        <li class="lang-id">Login dengan Google OAuth 2.0</li>
+
+        <li class="lang-en">CSS Toggle (Basic ↔ Modern)</li>
+        <li class="lang-id">Toggle CSS (Basic ↔ Modern)</li>
+
+        <li class="lang-en">Responsive design</li>
+        <li class="lang-id">Desain responsif</li>
+
+        <li class="lang-en">Compatible with localhost and Vercel</li>
+        <li class="lang-id">Kompatibel dengan localhost dan Vercel</li>
+
+        <li class="lang-en">Session management</li>
+        <li class="lang-id">Manajemen session</li>
+
+        <li class="lang-en">Profile display after login</li>
+        <li class="lang-id">Tampilan profil setelah login</li>
+
+        <li class="lang-en">Logout functionality</li>
+        <li class="lang-id">Fitur logout</li>
+
+        <li class="lang-en">Easy deployment to Vercel</li>
+        <li class="lang-id">Mudah di-deploy ke Vercel</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>
+        <span class="lang-en">🛠️ Tech Stack</span>
+        <span class="lang-id">🛠️ Teknologi</span>
+      </h2>
+      <div class="tech-stack">
+        <span class="tech-badge">Express.js</span>
+        <span class="tech-badge">Passport.js</span>
+        <span class="tech-badge">Google OAuth 2.0</span>
+        <span class="tech-badge">Express Session</span>
+        <span class="tech-badge">Node.js</span>
+        <span class="tech-badge">Vercel</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>
+        <span class="lang-en">📖 Usage</span>
+        <span class="lang-id">📖 Cara Pakai</span>
+      </h2>
+      <table>
+        <tr>
+          <th class="lang-en">Page</th>
+          <th class="lang-id">Halaman</th>
+          <th class="lang-en">Description</th>
+          <th class="lang-id">Deskripsi</th>
+        </tr>
+        <tr>
+          <td class="lang-en">/</td>
+          <td class="lang-id">/</td>
+          <td class="lang-en">
+            Login page - Click "Login with Google" to authenticate
+          </td>
+          <td class="lang-id">
+            Halaman login - Klik "Login with Google" untuk autentikasi
+          </td>
+        </tr>
+        <tr>
+          <td class="lang-en">/profile</td>
+          <td class="lang-id">/profile</td>
+          <td class="lang-en">
+            User profile page - Shows Google display name after login
+          </td>
+          <td class="lang-id">
+            Halaman profil pengguna - Menampilkan nama Google setelah login
+          </td>
+        </tr>
+        <tr>
+          <td class="lang-en">/logout</td>
+          <td class="lang-id">/logout</td>
+          <td class="lang-en">
+            Logout endpoint - Ends session and redirects to login
+          </td>
+          <td class="lang-id">
+            Endpoint logout - Mengakhiri session dan kembali ke login
+          </td>
+        </tr>
+        <tr>
+          <td class="lang-en">/feature.html</td>
+          <td class="lang-id">/feature.html</td>
+          <td class="lang-en">This features page</td>
+          <td class="lang-id">Halaman fitur ini</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="section">
+      <h2>
+        <span class="lang-en">📁 Project Structure</span>
+        <span class="lang-id">📁 Struktur Project</span>
+      </h2>
+      <pre>
+auth-vercel-2/
+├── api/
+│   └── index.js        # Main application file
+├── public/
+│   ├── styles.css      # CSS styles
+│   └── feature.html    # This file
+├── .env                # Environment variables (not committed)
+├── .env.sample         # Sample environment variables
+├── .gitignore          # Git ignore file
+├── package.json        # Project dependencies
+├── vercel.json         # Vercel configuration
+└── README.md           # Documentation</pre
+      >
+    </div>
+
+    <div style="text-align: center; padding-bottom: 30px">
+      <a href="/" class="cta-button lang-en"><span>🚀</span> Try Now</a>
+      <a href="/" class="cta-button lang-id"><span>🚀</span> Buka Aplikasi</a>
+    </div>
+
+    <script>
+      function setLanguage(lang) {
+        document.body.className = 'lang-' + lang;
+        localStorage.setItem('selectedLang', lang);
+
+        // Update all language-specific elements
+        document.querySelectorAll('.lang-en').forEach((el) => {
+          if (el.classList.contains('cta-button')) {
+            el.style.display = lang === 'en' ? 'inline-flex' : 'none';
+          } else {
+            el.style.display = lang === 'en' ? 'block' : 'none';
+          }
+        });
+        document.querySelectorAll('.lang-id').forEach((el) => {
+          if (el.classList.contains('cta-button')) {
+            el.style.display = lang === 'id' ? 'inline-flex' : 'none';
+          } else {
+            el.style.display = lang === 'id' ? 'block' : 'none';
+          }
+        });
+      }
+
+      // Load saved language preference
+      const savedLang = localStorage.getItem('selectedLang');
+      if (savedLang) {
+        setLanguage(savedLang);
+      }
+    </script>
+  </body>
+</html>

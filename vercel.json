@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/styles.css", "destination": "/styles.css" },
+    { "source": "/feature.html", "destination": "/feature.html" },
     { "source": "/(.*)", "destination": "/api/index.js" }
   ]
 }
